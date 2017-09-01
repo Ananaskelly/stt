@@ -3,7 +3,7 @@ import argparse
 
 import helper
 import hst
-
+import numpy as np
 
 parser = argparse.ArgumentParser(description='Build histogram for given array.')
 parser.add_argument('-f', metavar='filename', type=str, nargs=1,
@@ -20,7 +20,7 @@ def run():
     beans_num = args_dict['b'][0]
     data = helper.read_file(filename)
 
-    hist_val = hst.get_hist(data, len(data), int(beans_num))
+    hist_val = hst.get_hist(data, len(data), beans_num)
 
     # visualisation
     plt.bar(hist_val['x_val'][:-1], hist_val['y_val'], hist_val['int_size'], color='m')
